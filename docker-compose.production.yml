@@ -7,7 +7,7 @@ volumes:
 
 services:
 
-  kittygram:
+  db:
     image: postgres:13.10
     env_file: .env
     volumes:
@@ -17,7 +17,7 @@ services:
     image: haitaks/kittygram_backend
     env_file: .env
     depends_on:
-      - kittygram
+      - db
     volumes:
       - static_volume:/backend_static
       - media:/app/media
