@@ -1,8 +1,8 @@
 version: '3'
 
 volumes:
-  pg_data:
-  static:
+  pg_data_production:
+  static_production:
   media:
 
 services:
@@ -11,13 +11,13 @@ services:
     image: postgres:13.10
     env_file: .env
     volumes:
-      - pg_data:/var/lib/postgresql/data
+      - pg_data_production:/var/lib/postgresql/data
 
   backend:
     image: haitaks/kittygram_backend
     env_file: .env
     volumes:
-      - static:/backend_static
+      - static_production:/backend_static
       - media:/app/media
 
   frontend:
@@ -25,10 +25,7 @@ services:
     env_file: .env
     command: cp -r /app/build/. /frontend_static/
     volumes:
-      - static:/frontend_static
-    depends_on:
-      - backend
-
+      - static_production:/frontend_static
 
   gateway:
     image: haitaks/kittygram_gateway
@@ -36,7 +33,7 @@ services:
     depends_on:
       - frontend
     volumes:
-      - static:/staticfiles/
+      - static_production:/staticfiles/
       - media:/app/media
     ports:
       - 9000:80
