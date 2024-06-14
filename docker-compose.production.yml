@@ -35,7 +35,7 @@ services:
     depends_on:
       - frontend
     volumes:
-      - static_volume:/staticfiles
-      - media:/app/media
+      - static_volume:/staticfiles/
+      - media:/media
     ports:
       - 9000:80
