@@ -2,7 +2,7 @@ version: '3'
 
 volumes:
   pg_data:
-  static:
+  static_volume:
   media:
 
 services:
@@ -19,7 +19,7 @@ services:
     depends_on:
       - db
     volumes:
-      - static:/backend_static
+      - static_volume:/backend_static
       - media:/app/media
 
   frontend:
@@ -27,7 +27,7 @@ services:
     env_file: .env
     command: cp -r /app/build/. /frontend_static/
     volumes:
-      - static:/frontend_static
+      - static_volume:/frontend_static
 
   gateway:
     image: haitaks/kittygram_gateway
@@ -35,7 +35,7 @@ services:
     depends_on:
       - frontend
     volumes:
-      - static:/staticfiles
+      - static_volume:/staticfiles
       - media:/app/media
     ports:
       - 9000:80
