@@ -33,7 +33,7 @@ services:
     image: haitaks/kittygram_gateway
     env_file: .env
     depends_on:
-      - frontend
+      - backend
     volumes:
       - static_volume:/staticfiles/
       - media:/media
