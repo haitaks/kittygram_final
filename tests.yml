@@ -1,4 +1,4 @@
 repo_owner: haitaks
-kittygram_domain: https://z4v.ru/
-taski_domain: https://haitaks.zapto.org/
+kittygram_domain: https://z4v.ru:9000/
+taski_domain: https://haitakstaski.zapto.org/
 dockerhub_username: haitaks
