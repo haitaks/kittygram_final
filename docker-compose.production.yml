@@ -19,15 +19,15 @@ services:
     depends_on:
       - db
     volumes:
-      - static:/backend_static
+      - static:/static
       - media:/app/media/
 
   frontend:
     image: haitaks/kittygram_frontend
     env_file: .env
-    command: cp -r /app/build/. /frontend_static/
+    command: cp -r /app/build/. /static/
     volumes:
-      - static:/frontend_static
+      - static:/static
 
   gateway:
     image: haitaks/kittygram_gateway
@@ -36,7 +36,7 @@ services:
       - backend
       - frontend
     volumes:
-      - static:/staticfiles/
+      - static:/static/
       - media:/app/media/
     ports:
       - 9000:80
