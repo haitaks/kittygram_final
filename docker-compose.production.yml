@@ -3,7 +3,7 @@ version: '3'
 volumes:
   pg_data:
   static_volume:
-  media_volume:
+  media:
 
 services:
 
@@ -20,7 +20,7 @@ services:
       - db
     volumes:
       - static_volume:/backend_static
-      - media_volume:/app/media/
+      - media:/app/media/
 
   frontend:
     image: haitaks/kittygram_frontend
@@ -37,6 +37,6 @@ services:
       - frontend
     volumes:
       - static_volume:/staticfiles/
-      - media_volume:/app/media/
+      - media:/app/media/
     ports:
       - 9000:80
